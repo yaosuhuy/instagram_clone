@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "968258458713",
+    "project_id": "instagram-clone-huy",
+    "storage_bucket": "instagram-clone-huy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968258458713:android:c577f87772113758d60d48",
+        "android_client_info": {
+          "package_name": "com.example.demo0312lan2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968258458713-2alu2e2loib5opbrlu3k5ps7ml7jq01j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfvGuKZPoOaqlIRhKW8MsU4OoX-hAW6ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968258458713-2alu2e2loib5opbrlu3k5ps7ml7jq01j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "968258458713-hunset023sjm2kl3ug46dhiqec4ipoag.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.instagramFlutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:968258458713:android:19c74d631879234ad60d48",
+        "android_client_info": {
+          "package_name": "com.example.instagram_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "968258458713-2alu2e2loib5opbrlu3k5ps7ml7jq01j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfvGuKZPoOaqlIRhKW8MsU4OoX-hAW6ZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "968258458713-2alu2e2loib5opbrlu3k5ps7ml7jq01j.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "968258458713-hunset023sjm2kl3ug46dhiqec4ipoag.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.instagramFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
