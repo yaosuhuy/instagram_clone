@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/resources/storage_methods.dart';
 
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -23,21 +24,26 @@ class AuthMethods {
           username.isNotEmpty ||
           bio.isNotEmpty ||
           file != null) {
-            // register user
-            UserCredential cred = await  _auth.createUserWithEmailAndPassword(email: email, password: password);
-            
-            // add user to database
-            await _firestore.collection('user').doc(cred.user!.uid).set({
-              'username': username,
-              'uid': cred.user!.uid,
-              'email': email,
-              'password': password,
-              'bio': bio,
-              'followers': [],
-              'following': [],
-            });
-            res = "success";
-          }
+        // register user
+        UserCredential cred = await _auth.createUserWithEmailAndPassword(
+            email: email, password: password);
+
+        String photoUrl = await StorageMethods()
+            .uploadPictureToStorage('profilePics', file, false);
+
+        // add user to database
+        await _firestore.collection('user').doc(cred.user!.uid).set({
+          'username': username,
+          'uid': cred.user!.uid,
+          'email': email,
+          'password': password,
+          'bio': bio,
+          'followers': [],
+          'following': [],
+          'photoUrl': photoUrl,
+        });
+        res = "success";
+      }
     } catch (e) {
       res = e.toString();
     }
