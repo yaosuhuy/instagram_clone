@@ -30,7 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     _usernameController.dispose();
   }
 
-  void selectImage() async {
+  selectImage() async {
     Uint8List im = await pickingImage(ImageSource.gallery);
     setState(() {
       _image = im;
@@ -68,14 +68,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         )
                       : CircleAvatar(
                           radius: 64,
-                          backgroundImage: NetworkImage('https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'),),
+                          backgroundImage: NetworkImage(
+                              'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'),
+                        ),
                   Positioned(
                     bottom: -10,
                     left: 80,
                     child: IconButton(
-                      onPressed: () {
-                        selectImage;
-                      },
+                      onPressed: selectImage,
                       icon: const Icon(Icons.add_a_photo),
                     ),
                   )
@@ -127,12 +127,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
               InkWell(
                 onTap: () async {
                   String res = await AuthMethods().signUpUser(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    username: _usernameController.text,
-                    bio: _bioController.text,
-                    file: _image!
-                  );
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      username: _usernameController.text,
+                      bio: _bioController.text,
+                      file: _image!);
                   print(res);
                 },
                 child: Container(
