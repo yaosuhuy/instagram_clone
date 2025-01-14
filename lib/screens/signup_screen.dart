@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:instagram_clone/resources/auth_methods.dart';
+import 'package:instagram_clone/responsive/mobile_screen_layout.dart';
+import 'package:instagram_clone/responsive/responsive_layout_screen.dart';
+import 'package:instagram_clone/responsive/web_screen_layout.dart';
+import 'package:instagram_clone/screens/login_screen.dart';
 import 'package:instagram_clone/ultis/colors.dart';
 import 'package:instagram_clone/ultis/ultis.dart';
 import 'package:instagram_clone/widgets/text_field_input.dart';
@@ -50,6 +54,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         file: _image!);
     if (res != 'success') {
       showSnackBar(res, context);
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayout(
+            webScreenLayout: WebScreenLayout(),
+            mobileScreenLayout: MobileScreenLayout(),
+          ),
+        ),
+      );
     }
     setState(() {
       _isLoading = false;
@@ -166,19 +179,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               Flexible(child: Container(), flex: 2),
-              // transmitioning to sign up
+              // transmitioning to log in
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    child: const Text('Don\'t have an account? '),
+                    child: const Text('Already have an account? '),
                     padding: EdgeInsets.symmetric(vertical: 8),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: navigateToLogin,
                     child: Container(
                       child: const Text(
-                        'Sign up!',
+                        'Log in!',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       padding: EdgeInsets.symmetric(vertical: 8),
@@ -191,5 +204,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ),
       ),
     );
+  }
+
+  void navigateToLogin() {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }

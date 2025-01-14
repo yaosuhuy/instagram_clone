@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
+              // means the user has been authenticated
               return const ResponsiveLayout(
                 webScreenLayout: WebScreenLayout(),
                 mobileScreenLayout: MobileScreenLayout(),
@@ -57,10 +58,15 @@ class MyApp extends StatelessWidget {
                 child: Text('Some internal errors occurred: ${snapshot.error}'),
               );
             }
-            if (snapshot.connectionState == ConnectionState.waiting){
-              
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: primaryColor,
+                ),
+              );
             }
           }
+          return const LoginScreen();
         },
       ),
     );
