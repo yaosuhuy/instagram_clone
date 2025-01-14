@@ -72,7 +72,8 @@ class AuthMethods {
       } else {
         res = 'Please enter all the fields';
       }
-    } catch (e) {
+    }  
+    catch (e) {
       res = e.toString();
     }
     return res;
