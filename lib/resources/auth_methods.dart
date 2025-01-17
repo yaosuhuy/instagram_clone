@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:instagram_clone/models/user.dart' as model;
 import 'package:flutter/material.dart';
 import 'package:instagram_clone/resources/storage_methods.dart';
 
@@ -31,17 +32,33 @@ class AuthMethods {
         String photoUrl = await StorageMethods()
             .uploadPictureToStorage('profilePics', file, false);
 
+        model.User user = model.User(
+            username: username,
+            uid: cred.user!.uid,
+            email: email,
+            password: password,
+            bio: bio,
+            followers: [],
+            following: [],
+            photoUrl: photoUrl);
+
         // add user to database
-        await _firestore.collection('user').doc(cred.user!.uid).set({
-          'username': username,
-          'uid': cred.user!.uid,
-          'email': email,
-          'password': password,
-          'bio': bio,
-          'followers': [],
-          'following': [],
-          'photoUrl': photoUrl,
-        });
+        // old
+        // await _firestore.collection('user').doc(cred.user!.uid).set({
+        //   'username': username,
+        //   'uid': cred.user!.uid,
+        //   'email': email,
+        //   'password': password,
+        //   'bio': bio,
+        //   'followers': [],
+        //   'following': [],
+        //   'photoUrl': photoUrl,
+        // });
+
+        // new
+        await _firestore.collection('user').doc(cred.user!.uid).set(
+              user.toJson(),
+            );
         res = "success";
       }
     }
@@ -72,8 +89,7 @@ class AuthMethods {
       } else {
         res = 'Please enter all the fields';
       }
-    }  
-    catch (e) {
+    } catch (e) {
       res = e.toString();
     }
     return res;
