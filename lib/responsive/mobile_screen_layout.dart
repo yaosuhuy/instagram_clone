@@ -23,13 +23,18 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This is mobile screen layout!'),
+        child: Text('Hello, ${username}'),
       ),
     );
   }
-  
+
   void getUsername() async {
-    DocumentSnapshot snap = await FirebaseFirestore.instance.collection('user').doc(FirebaseAuth.instance.currentUser!.uid).get();
-    print(snap.data());
+    DocumentSnapshot snap = await FirebaseFirestore.instance
+        .collection('user')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .get();
+    setState(() {
+      username = (snap.data() as Map<String, dynamic>)['username'];
+    });
   }
 }
