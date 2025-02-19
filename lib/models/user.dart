@@ -39,6 +39,7 @@ class User {
       bio: snapshot['bio'],
       followers: snapshot['followers'],
       following: snapshot['following'],
+      
     );
   }
 }
