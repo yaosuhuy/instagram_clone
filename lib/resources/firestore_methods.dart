@@ -96,4 +96,13 @@ class FirestoreMethods {
     }
     return res;
   }
+
+  // deleting post
+  Future<void> deletePost(String postId) async {
+    try {
+      
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 }
