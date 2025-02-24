@@ -134,7 +134,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   setState(() {
                                                     isFollowing = false;
                                                     followerLength--;
-                                                    followingLength--;
+                                                    
                                                   });
                                                 },
                                               )
@@ -152,7 +152,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                   setState(() {
                                                     isFollowing = true;
                                                     followerLength++;
-                                                    followingLength++;
+                                                   
                                                   });
                                                 },
                                               )
