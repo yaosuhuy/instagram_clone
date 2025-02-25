@@ -21,6 +21,7 @@ class User {
     required this.following,
   });
 
+  // convert an object 'User' to a map, so we can store it in Firestore
   Map<String, dynamic> toJson() => {
         'username': username,
         'uid': uid,
@@ -31,6 +32,7 @@ class User {
         'following': [],
       };
 
+  // convert a DocumentSnapshot that received from firebase to an object "User"
   static User fromSnap(DocumentSnapshot snap) {
     var snapshot = snap.data() as Map<String, dynamic>;
     return User(
@@ -42,7 +44,6 @@ class User {
       bio: snapshot['bio'],
       followers: snapshot['followers'],
       following: snapshot['following'],
-      
     );
   }
 }
